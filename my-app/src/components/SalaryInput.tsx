@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { SalaryContext } from "../contexts/SalaryContext";
+import '../css/BasicSalary.css';
 
 const SalaryInput: React.FC = () => {
   const { basicSalary, setBasicSalary } = useContext(SalaryContext);
 
   return (
-    <div>
+    <div className="container">
       <h2>Calculate Your Salary</h2>
-      <div>
+      <div className="input-container">
         <label htmlFor="basicSalary">Basic Salary</label>
         <input
           type="number"
