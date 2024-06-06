@@ -1,0 +1,22 @@
+/* styles.css */
+
+.button-container {
+    display: flex;
+    justify-content:space-evenly; /* Center the buttons horizontally */
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    background-color: #ccc; /* Ash color */
+    color: #000; /* Black text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #999; /* Darker ash color on hover */
+  }
+  

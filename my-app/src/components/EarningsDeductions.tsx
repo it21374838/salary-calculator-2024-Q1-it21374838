@@ -1,5 +1,8 @@
+// EarningsDeductions.tsx
+
 import React, { useContext, useState } from 'react';
 import { SalaryContext } from "../contexts/SalaryContext";
+import '../css/EarnDeduction.css';
 
 const EarningsDeductions: React.FC = () => {
   const {
@@ -32,11 +35,11 @@ const EarningsDeductions: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="section">
         <h3>Earnings</h3>
         {earnings.map((earning, index) => (
-          <div key={index}>
+          <div key={index} className="input-container">
             <input
               type="text"
               value={earning.name}
@@ -66,7 +69,7 @@ const EarningsDeductions: React.FC = () => {
             <button onClick={() => removeEarning(index)}>Remove</button>
           </div>
         ))}
-        <div>
+        <div className="input-container">
           <input
             type="text"
             placeholder="New Earning Name"
@@ -85,16 +88,16 @@ const EarningsDeductions: React.FC = () => {
               checked={newEarning.epfEtf}
               onChange={() => setNewEarning({ ...newEarning, epfEtf: !newEarning.epfEtf })}
             />
-            EPF/ETF Applicable
+            EPF/ETF 
           </label>
           <button onClick={handleAddEarning}>Add New Earning</button>
         </div>
       </div>
 
-      <div>
+      <div className="section">
         <h3>Deductions</h3>
         {deductions.map((deduction, index) => (
-          <div key={index}>
+          <div key={index} className="input-container">
             <input
               type="text"
               value={deduction.name}
@@ -119,12 +122,12 @@ const EarningsDeductions: React.FC = () => {
                 checked={deduction.epfEtf}
                 onChange={() => toggleEpfEtf(index, 'deduction')}
               />
-              EPF/ETF Applicable
+              EPF/ETF
             </label>
             <button onClick={() => removeDeduction(index)}>Remove</button>
           </div>
         ))}
-        <div>
+        <div className="input-container">
           <input
             type="text"
             placeholder="New Deduction Name"
@@ -143,7 +146,7 @@ const EarningsDeductions: React.FC = () => {
               checked={newDeduction.epfEtf}
               onChange={() => setNewDeduction({ ...newDeduction, epfEtf: !newDeduction.epfEtf })}
             />
-            EPF/ETF Applicable
+            EPF/ETF
           </label>
           <button onClick={handleAddDeduction}>Add New Deduction</button>
         </div>
