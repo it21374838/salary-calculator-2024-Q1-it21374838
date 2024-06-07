@@ -1,8 +1,6 @@
-// EarningsDeductions.tsx
-
 import React, { useContext, useState } from 'react';
 import { SalaryContext } from "../contexts/SalaryContext";
-import '../css/EarnDeduction.css';
+
 
 const EarningsDeductions: React.FC = () => {
   const {
@@ -35,121 +33,143 @@ const EarningsDeductions: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="section">
-        <h3>Earnings</h3>
+    <div>
+      <div className="mb-4">
+        <h3 className="text-lg font-medium text-gray-700">Earnings</h3>
         {earnings.map((earning, index) => (
-          <div key={index} className="input-container">
+          <div key={index} className="flex items-center mb-2">
             <input
               type="text"
               value={earning.name}
-              onChange={(e) => {
-                const updatedEarning = { ...earning, name: e.target.value };
-                updateEarning(index, updatedEarning);
-              }}
+              onChange={(e) => updateEarning(index, { ...earning, name: e.target.value })}
+              className="p-2 border border-gray-300 rounded-md w-48"
               placeholder="Earning Name"
             />
             <input
               type="number"
               value={earning.amount}
-              onChange={(e) => {
-                const updatedEarning = { ...earning, amount: parseFloat(e.target.value) || 0 };
-                updateEarning(index, updatedEarning);
-              }}
+              onChange={(e) => updateEarning(index, { ...earning, amount: parseFloat(e.target.value) || 0 })}
+              className="p-2 border border-gray-300 rounded-md mx-2 w-40"
               placeholder="Amount"
             />
-            <label>
+            <label className="flex items-center">
               <input
                 type="checkbox"
                 checked={earning.epfEtf}
                 onChange={() => toggleEpfEtf(index, 'earning')}
+                className="mr-2"
               />
-              EPF/ETF Applicable
+              EPF/ETF
             </label>
-            <button onClick={() => removeEarning(index)}>Remove</button>
+            <button
+              onClick={() => removeEarning(index)}
+              className="ml-2 text-red-500"
+            >
+              Remove
+            </button>
           </div>
         ))}
-        <div className="input-container">
+        <div className="flex items-center">
           <input
             type="text"
             placeholder="New Earning Name"
             value={newEarning.name}
             onChange={(e) => setNewEarning({ ...newEarning, name: e.target.value })}
+            className="p-2 border border-gray-300 rounded-md  w-48"
           />
           <input
             type="number"
             placeholder="New Earning Amount"
             value={newEarning.amount}
             onChange={(e) => setNewEarning({ ...newEarning, amount: parseFloat(e.target.value) || 0 })}
+            className="p-2 border border-gray-300 rounded-md mx-2 w-40"
           />
-          <label>
+          <label className="flex items-center">
             <input
               type="checkbox"
               checked={newEarning.epfEtf}
               onChange={() => setNewEarning({ ...newEarning, epfEtf: !newEarning.epfEtf })}
+              className="mr-2"
             />
-            EPF/ETF 
+            EPF/ETF
           </label>
-          <button onClick={handleAddEarning}>Add New Earning</button>
+         
         </div>
+        <button
+            onClick={handleAddEarning}
+            className="ml-2 text-blue-500 mt-5"
+          >
+            Add New Allowance
+          </button>
       </div>
 
-      <div className="section">
-        <h3>Deductions</h3>
+      <div>
+        <h3 className="text-lg font-medium text-gray-700">Deductions</h3>
         {deductions.map((deduction, index) => (
-          <div key={index} className="input-container">
+          <div key={index} className="flex items-center mb-2">
             <input
               type="text"
               value={deduction.name}
-              onChange={(e) => {
-                const updatedDeduction = { ...deduction, name: e.target.value };
-                updateDeduction(index, updatedDeduction);
-              }}
+              onChange={(e) => updateDeduction(index, { ...deduction, name: e.target.value })}
+              className="p-2 border border-gray-300 rounded-md w-48"
               placeholder="Deduction Name"
             />
             <input
               type="number"
               value={deduction.amount}
-              onChange={(e) => {
-                const updatedDeduction = { ...deduction, amount: parseFloat(e.target.value) || 0 };
-                updateDeduction(index, updatedDeduction);
-              }}
+              onChange={(e) => updateDeduction(index, { ...deduction, amount: parseFloat(e.target.value) || 0 })}
+              className="p-2 border border-gray-300 rounded-md mx-2 w-40"
               placeholder="Amount"
             />
-            <label>
+            <label className="flex items-center">
               <input
                 type="checkbox"
                 checked={deduction.epfEtf}
                 onChange={() => toggleEpfEtf(index, 'deduction')}
+                className="mr-2"
               />
               EPF/ETF
             </label>
-            <button onClick={() => removeDeduction(index)}>Remove</button>
+            <button
+              onClick={() => removeDeduction(index)}
+              className="ml-2 text-red-500"
+            >
+              Remove
+            </button>
           </div>
         ))}
-        <div className="input-container">
+        <div className="flex items-center ">
           <input
             type="text"
             placeholder="New Deduction Name"
             value={newDeduction.name}
             onChange={(e) => setNewDeduction({ ...newDeduction, name: e.target.value })}
+            className="p-2 border border-gray-300 rounded-md w-48"
           />
           <input
             type="number"
             placeholder="New Deduction Amount"
             value={newDeduction.amount}
             onChange={(e) => setNewDeduction({ ...newDeduction, amount: parseFloat(e.target.value) || 0 })}
+            className="p-2 border border-gray-300 rounded-md mx-2 w-40"
           />
-          <label>
+          <label className="flex items-center">
             <input
               type="checkbox"
               checked={newDeduction.epfEtf}
               onChange={() => setNewDeduction({ ...newDeduction, epfEtf: !newDeduction.epfEtf })}
+              className="mr-2"
             />
             EPF/ETF
           </label>
-          <button onClick={handleAddDeduction}>Add New Deduction</button>
+         
         </div>
+        <button
+            onClick={handleAddDeduction}
+            className="ml-2 text-blue-500 mt-5"
+          >
+            Add New Deduction
+          </button>
       </div>
     </div>
   );
